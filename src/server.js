@@ -2,20 +2,21 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const router =require("./routes");
+require('dotenv').config();
+
 
 const server = express();
 server.use(express.json());
+server.use(express.urlencoded({extended: true}))
 server.use(cors());
 server.use(morgan("dev"));
 server.use((req,res, next)=>{
-    res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Credentials','true');
-    res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT, DELETE');
+    console.log(req); 
     next();
 });
 
-server.use(router);
+server.use(router); 
+server.use(express.static('src'));
 
 
 module.exports = server;
