@@ -46,4 +46,4 @@ const findAllProductos = async (req, res) => {
     }
 };
 
-module.exports = findAllProductos;
+module.exports = findAllProductos; 
