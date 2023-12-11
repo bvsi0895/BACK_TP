@@ -5,7 +5,7 @@ const postUser = async (req, res) => {
         const { mail, password, rol } = req.body
          console.log(req.body);
 
-         if(!mail || !password) return res.status(400).json('Faltan datos')
+         if(!mail || !password || !rol) return res.status(400).json('Faltan datos')
          const user = await User.findOrCreate({ where: {mail: mail, password: password}})
 
          return res.status(200).json('Registro exitoso')
