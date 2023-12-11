@@ -2,7 +2,7 @@ const { User }= require('../DB_connection')
 
 const postUser = async (req, res) => {
     try {
-        const { mail, password } = req.body
+        const { mail, password, rol } = req.body
          console.log(req.body);
 
          if(!mail || !password) return res.status(400).json('Faltan datos')
